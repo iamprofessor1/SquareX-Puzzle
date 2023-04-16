@@ -7,6 +7,9 @@
 #include <stack>
 using namespace std;
 
+// dx and dy arrays used to define the possible movements of the blank tile
+int dx[] = {0, 1, 0, -1};
+int dy[] = {1, 0, -1, 0};
 // include user-defined header files
 #include "stateModeling.h" // assuming StateNode.h file is present in the same directory
 #include "bfs.h"           // assuming bfs.h file is present in the same directory

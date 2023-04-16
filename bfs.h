@@ -1,8 +1,5 @@
 #include "solutionPrinter.h"
 
-// dx and dy arrays used to define the possible movements of the blank tile
-int dx[] = {0, 1, 0, -1};
-int dy[] = {1, 0, -1, 0};
 
 // Function to perform a BFS search for solving the puzzle
 void bfs(StateNode *src, vector<vector<int>> &board_final)
