@@ -89,37 +89,42 @@ g++ puzzleSolver.cpp -o puzzleSolver
 
 ```sh
 Congratulations! We've found the solution using BFS! 
-You'll be happy to know that it only took us 23 moves to get there! :) 
+You'll be happy to know that it only took us 17 moves to get there! :) 
  This is puzzle you have given :- 
 Move no :- 0
-[ 3 8 5 ] 
-[ 0 7 1 ] 
-[ 2 6 4 ] 
+[ 7 5 4 ] 
+[ 0 3 2 ] 
+[ 8 1 6 ] 
 
 
 Move no :- 1
-[ 3 8 5 ] 
-[ 7 0 1 ] 
-[ 2 6 4 ] 
+[ 0 5 4 ] 
+[ 7 3 2 ] 
+[ 8 1 6 ] 
 
 Move no :- 2
-[ 3 8 5 ] 
-[ 7 1 0 ] 
-[ 2 6 4 ] 
+[ 5 0 4 ] 
+[ 7 3 2 ] 
+[ 8 1 6 ] 
 
 Move no :- 3
-[ 3 8 5 ] 
-[ 7 1 4 ] 
-[ 2 6 0 ] 
-
+[ 5 4 0 ] 
+[ 7 3 2 ] 
+[ 8 1 6 ] 
 ...
 ...
 ...
 
-Move no :- 23
+Move no :- 16
+[ 1 2 3 ] 
+[ 4 5 0 ] 
+[ 7 8 6 ] 
+
+Move no :- 17
 [ 1 2 3 ] 
 [ 4 5 6 ] 
 [ 7 8 0 ] 
+
 
 ```
 
