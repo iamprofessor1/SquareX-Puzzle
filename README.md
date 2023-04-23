@@ -72,7 +72,7 @@ cd SquareX-Puzzle
 
 ```sh
 g++ puzzleSolver.cpp -o puzzleSolver
-```sh
+```
 
 
 ➤ Run the program:
