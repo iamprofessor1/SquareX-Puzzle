@@ -53,6 +53,7 @@ The project is written in C++ and designed to be easily adaptable to other langu
 
 ## Getting Started
 
+
 ➤ Getting started with SquareX-Puzzle:
 
 Clone the repository:
@@ -61,12 +62,17 @@ git clone https://github.com/iamprofessor1/SquareX-Puzzle.git
 ```
 
 ➤ Navigate to the project directory:
+
 ```sh
 cd SquareX-Puzzle
 ```
 
+
 ➤ Compile the code:
+
+```sh
 g++ puzzleSolver.cpp -o puzzleSolver
+```sh
 
 
 ➤ Run the program:
@@ -74,6 +80,7 @@ g++ puzzleSolver.cpp -o puzzleSolver
 ```sh
 ./puzzleSolver
 ```
+
 
 ➤ Enter the puzzle configuration:
 
@@ -84,6 +91,7 @@ g++ puzzleSolver.cpp -o puzzleSolver
 0 7 1
 2 6 4
 ```
+
 
 ➤ Wait for the program to calculate the solution:
 
@@ -128,7 +136,9 @@ Move no :- 17
 
 ```
 
+
 Note: The program uses the BFS algorithm to find the solution. It may take a while to compute the solution for larger puzzle configurations.
+
 
 
 ## Files Description
