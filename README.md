@@ -28,13 +28,13 @@
 - [Files Description](#files-description)
     - [stateModeling.h](#statemodelingh)
     - [bfs.h](#bfsh)
+    - [a_star.h](#a_starh)
     - [solutionPrinter.h](#solutionprinterh)
     - [puzzleSolver.cpp](#puzzlesolvercpp)
     - [inputPuzzle.txt](#inputpuzzletxt)
-    - [outputSolution.txt](#outputsolutiontxt)
 - [Time Complexity](#time-complexity)
 - [Contributing](#contributing)
-- [Need Help](#need-Help)
+- [Need Help](#need-help)
 
 
 ## About The Project
@@ -84,18 +84,40 @@ g++ puzzleSolver.cpp -o puzzleSolver
 
 ➤ Enter the puzzle configuration:
 
-```sh
+Output:-
+```sh 
+---***---Welcome to SquareXPuzzle-Game Solver---***----
+? Please Enter the size of board in the form of N X N
+```
 
-3
+Input:-
+```sh
+3 3
+```
+Output:-
+```sh 
+The board size is 3 X 3
+? Enter the board
+```
+Input:-
+```sh
 3 8 5
 0 7 1
 2 6 4
 ```
 
+Output:-
+```sh
+---***---Now pick a choice by which you want to solve---***----
+? Enter 1 for BFS and 2 for A*(Star)
+```
 
 ➤ Wait for the program to calculate the solution:
 
+<b> BFS </b>
+<br>
 ```sh
+
 Congratulations! We've found the solution using BFS! 
 You'll be happy to know that it only took us 17 moves to get there! :) 
  This is puzzle you have given :- 
@@ -134,10 +156,63 @@ Move no :- 17
 [ 7 8 0 ] 
 
 
+Time taken to execute using the approach BFS :-> 2.172 seconds
+
+```
+Note: The program uses the BFS algorithm  to find the solution. It may take a while to compute the solution for larger puzzle configurations.
+
+<b> A Star </b>
+<br>
+
+```sh
+Congratulations! We've found the solution using A* ( A_star)!
+You'll be happy to know that it only took us 23 moves to get there! :)
+ This is puzzle you have given :-
+Move no :- 0
+[ 3 8 5 ]
+[ 0 7 1 ]
+[ 2 6 4 ]
+
+
+Move no :- 1
+[ 3 8 5 ]
+[ 7 0 1 ]
+[ 2 6 4 ]
+
+Move no :- 2
+[ 3 8 5 ]
+[ 7 1 0 ]
+[ 2 6 4 ]
+
+Move no :- 3
+[ 3 8 5 ]
+[ 7 1 4 ]
+[ 2 6 0 ]
+
+Move no :- 4
+[ 3 8 5 ]
+[ 7 1 4 ]
+[ 2 0 6 ]
+
+...
+...
+...
+Move no :- 22
+[ 1 2 3 ]
+[ 4 5 0 ]
+[ 7 8 6 ]
+
+Move no :- 23
+[ 1 2 3 ]
+[ 4 5 6 ]
+[ 7 8 0 ]
+
+Time taken to execute using the approach A*(A_star) :-> 0.047 seconds
 ```
 
 
-Note: The program uses the BFS algorithm to find the solution. It may take a while to compute the solution for larger puzzle configurations.
+
+
 
 
 
@@ -162,6 +237,23 @@ If the final state is reached, it prints the number of moves required to reach t
 
 The code also includes a visited map to keep track of already visited states and avoids repeating them.
 
+### a_star.h
+This code implements the A* algorithm to solve puzzles by efficiently navigating through possible states. Key components include:
+
+Heuristic Function: The algorithm employs a heuristic function,(the Manhattan distance), to estimate the cost from a state to the goal state. This guides the search process and helps in choosing the most promising states.
+
+Priority Queue: A priority queue is utilized to prioritize the exploration of states based on their combined cost and level. The goal is to minimize the overall cost to reach the solution.
+
+State Modeling: The state of the puzzle is modeled using a StateNode structure. This structure holds information about the puzzle's configuration, including tile positions, board size, and associated costs.
+
+Exploration and Backtracking: The algorithm explores potential states, considering possible moves and calculating heuristic costs. Backtracking is employed when certain states are found to be unsuitable.
+
+Solution Path Printing: Upon finding a solution, the algorithm prints the path from the initial state to the goal state. This allows for clear visualization of the sequence of moves leading to the solution.
+
+The A_Star function encapsulates the A* algorithm logic, while the Heuristics.h and solutionPrinter.h headers provide essential components for cost estimation and solution visualization, respectively.
+
+The A* algorithm presented in this code offers a versatile and effective method to solve various types of puzzles and optimization problems efficiently.
+
 ### solutionPrinter.h
 This is the header file for the solution printer module. It includes the header file for state modeling and declares a function print_solution that prints the solution path for the given puzzle. The function takes a pointer to the current state node as input and prints the board configurations along with the move number. The solution path is printed in reverse order using a stack to store the StateNodes.
 
@@ -181,17 +273,6 @@ The program sets the input and output files to inputPuzzle.txt and outputSolutio
 
 The file named inputPuzzle.txt contains the input for the puzzle solver program. The first line of the file contains a single integer, which represents the size of the board (i.e., n x n). The next n lines represent the initial configuration of the board. Each line contains n integers separated by spaces, where each integer represents a tile in the board. The number 0 represents the blank tile
 
-### outputSolution.txt
-The outputSolution.txt file contains the solution steps to solve the sliding tile puzzle. The steps are written in the following format:
-
-Step 1:
-The board configuration after the first move.
-
-Step 2:
-The board configuration after the second move.
-
-And so on, until the final configuration is reached
-
 
 
 ## Time Complexity
@@ -209,6 +290,9 @@ Moreover, the implemented algorithm uses a hash map to store the visited nodes a
 
 Therefore, the actual time complexity of the algorithm is significantly lower than the upper bound and can be considered reasonable for solving practical instances of the n-puzzle problem.
 
+The time complexity of the A* algorithm depends on the branching factor (maximum possible moves from a state), the depth of the solution (minimum moves to reach the goal), and the accuracy of the heuristic function (estimating cost to the goal).
+
+In general terms, its time complexity is usually expressed as O(B^d), where B is the branching factor and d is the depth of the solution. With an admissible heuristic, the time complexity can be tighter, often O(B^h)* where h* is the optimal cost.
 
 
 ## Contributing
