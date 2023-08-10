@@ -1,6 +1,5 @@
 #include "solutionPrinter.h"
 
-
 // Function to perform a BFS search for solving the puzzle
 void bfs(StateNode *src, vector<vector<int>> &board_final)
 {

@@ -13,15 +13,19 @@ int dy[] = {1, 0, -1, 0};
 // include user-defined header files
 #include "stateModeling.h" // assuming StateNode.h file is present in the same directory
 #include "bfs.h"           // assuming bfs.h file is present in the same directory
+#include "A_star.h"        // assuming A_star.h file is present in the same directory
 
 // function to solve the puzzle
 void solve()
 {
+    cout << "---***---Welcome to SquareXPuzzle-Game Solver---***----" << endl;
     // get the size of the board n*n;
+    cout << "? Please Enter the size of board in the form of N X N" << endl;
     int n;
-    cin >> n;
-
+    cin >> n >> n;
+    cout << "The board size is " << n << " X " << n << endl;
     // create vector for initial and final board configurations
+    cout << "? Enter the board" << endl;
     vector<vector<int>> board_initial;
     vector<vector<int>> board_final;
     board_initial.resize(n, vector<int>(n, 0));
@@ -55,8 +59,43 @@ void solve()
     // create the initial StateNode
     StateNode *src = new StateNode(blank, blank, 0, n, board_initial, NULL);
 
-    // solve the puzzle using BFS
-    bfs(src, board_final);
+
+
+
+
+
+
+    // ---- Here is the solution ---- ///
+
+    cout << "---***---Now pick a choice by which you want to solve---***----" << endl;
+    cout << "? Enter 1 for BFS and 2 for A*(Star)" << endl;
+    int choice;
+    cin >> choice;
+    clock_t start_clock = clock();
+
+    switch (choice)
+    {
+        // solve the puzzle using BFS
+    case 1:
+        bfs(src, board_final);
+        break;
+
+        // solve the puzzle using A*
+    case 2:
+        A_Star(src);
+        break;
+    default:
+        cout << "Please Enter Correct Choice (1 or 2) !!!! " << endl;
+        break;
+    }
+
+    // --- Here is the time module ---//
+    clock_t end_clock = clock();
+    cout << "Time taken to execute using the approach " << (choice == 1 ? "BFS :-> " : choice == 2 ? "A*(A_star) :-> "
+                                                                                                   : " of Wrong Choice :-> ")
+         << (double)(end_clock - start_clock) / CLOCKS_PER_SEC << " seconds" << endl;
+
+    // ------------------------------------------------------------------------ //
 }
 
 int main()
@@ -67,10 +106,10 @@ int main()
     cout.tie(0);
 
     // For getting puzzle input from input.txt file
-    freopen("inputPuzzle.txt", "r", stdin);
+    // freopen("inputPuzzle.txt", "r", stdin);
 
-    // Printing the solution steps in output.txt file
-    freopen("outputSolution.txt", "w", stdout);
+    // // Printing the solution steps in output.txt file
+    // freopen("outputSolution.txt", "w", stdout);
 
     // call the solve function to solve the puzzle
     solve();

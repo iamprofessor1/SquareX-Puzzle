@@ -1,4 +1,3 @@
-// Header file for state modeling
 #ifndef STATEMODELING_H
 #define STATEMODELING_H
 
@@ -10,7 +9,8 @@ struct StateNode
     int level;                 // The depth of the StateNode in the search tree
     int n;                     // The size of the board (i.e., n x n)
     vector<vector<int>> board; // The board configuration
-    StateNode *parent;                // Pointer to the parent StateNode
+    StateNode *parent;         // Pointer to the parent StateNode
+    int cost;
 
     // Constructor for the StateNode struct
     StateNode(pair<int, int> blank, pair<int, int> next, int level, int n, vector<vector<int>> board, StateNode *parent)
@@ -27,6 +27,7 @@ struct StateNode
         this->board[blank.first][blank.second] = this->board[next.first][next.second];
         this->board[next.first][next.second] = temp;
         this->blank = this->next;
+        this->cost = 1e9;
     }
 };
 
